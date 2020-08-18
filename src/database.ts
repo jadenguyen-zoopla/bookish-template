@@ -1,5 +1,4 @@
 import Knex from "knex";
-import { title } from "process";
 
 const client = Knex ({
     client: 'pg',
@@ -12,29 +11,35 @@ const client = Knex ({
     }
 });
 
+/* ========= LIST OF BOOKS ====== */
 
 export const getAllBooks = () => {
     return client('book')
     .select()
 }
 
+/* ========= LIST OF TITLES ====== */
+
 export const getAllTitles = () => {
     return client('book')
-    .select()
-    // .where('title', 'like', `%${title}`)
+    .select('title')
 }
+
+/* ========= LIST OF AUTHORS ====== */
 
 export const getAllAuthors = () => {
     return client('book')
     .select('author')
-    // .where('last_name', 'like', `%${name}`)
 }
 
-// interface Book {
-//     title: string;
-//     author: string;
-// }
+/* ========= ADD BOOK ====== */
 
-// export const addNewBook = (book: Book) => {
-//     client.insert({title: addNewBook.title, author: addNewBook.author})
-// }
+interface Book {
+    title: string;
+    author: string;
+}
+
+export const addNewBook = (book: Book) => {
+   return client.insert({title: book.title, author: book.author})
+   .into('book')
+}

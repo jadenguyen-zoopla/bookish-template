@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<ul>
+    <form method="post" action="/add-book">        
+        
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title"/>
+
+        <label for="author">Author</label>
+        <input id="author" type="text" name="author"/>
+
+        <!-- <label for="message-input"></label>
+        <input id="message-input" type="text" name="Message"/> -->
+
+        <button type="submit">Submit</button>
+
+    </form>
+</ul>
+
+{% endblock %}

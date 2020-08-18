@@ -1,9 +1,8 @@
 ﻿import "dotenv/config";
-import express, { response } from "express";
+import express, { response, request } from "express";
 import nunjucks from "nunjucks";
 import sassMiddleware from "node-sass-middleware";
-import {getAllBooks, getAllAuthors, getAllTitles} from "./database"
-import { title } from "process";
+import {getAllBooks, getAllAuthors, getAllTitles, addNewBook} from "./database"
 
 const app = express();
 const port = process.env['PORT'] || 3000;
@@ -21,6 +20,10 @@ app.use(
     express.static('public')
 );
 
+app.use(
+    express.urlencoded({extended:true})
+)
+
 const PATH_TO_TEMPLATES = "./templates/";
 nunjucks.configure(PATH_TO_TEMPLATES, { 
     autoescape: true,
@@ -32,7 +35,7 @@ app.get("/", (req, res) => {
         message: "World"
     }
     res.render('index.html', model);
-});
+})
 
 app.get("/all-books", async (request, response) => {
     const bookRequest = await getAllBooks();
@@ -48,7 +51,7 @@ app.get("/all-titles", async (request, response) => {
         titles: titleRequest
     }
     response.render('titles.html', model);
-});
+})
 
 app.get("/all-authors", async (request, response) => {
     const authorRequest = await getAllAuthors();
@@ -56,13 +59,18 @@ app.get("/all-authors", async (request, response) => {
         authors: authorRequest
     }
     response.render('authors.html', model);
-});
+})
 
-// app.get("/add-book", async (request, response) => {
-//     const book = request.body
-//     await addNewBook(book)
-//     response.send('book added!');
-// });
+app.get("/add-book", async (request, response) => {
+    response.render('addBook.html')
+}) 
+
+app.post("/add-book", async (request, response) => {
+    const book = request.body
+    console.log(book)
+    await addNewBook(book)
+    response.redirect("/all-books");
+});
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`)
