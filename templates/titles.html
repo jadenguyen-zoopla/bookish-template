@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<ul>
+    {% for book in titles %}
+    <li class="bigText">{{book.title}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

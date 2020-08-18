@@ -1,3 +1,52 @@
 ﻿body {
-  background: red;
+  margin: 0;
+  padding: 0;
+  background: black;
+  box-sizing: border-box;
+}
+
+.title {
+  background: url("https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80");
+  height: 200px;
+}
+
+.brand-name {
+  font-size: 80px;
+  color: white;
+  text-decoration: none;
+}
+
+a.brand-name {
+  margin-top: 30px;
+  padding: 50px;
+}
+
+nav.title{
+  text-align: center;
+}
+
+li.nav-list{
+  display: inline;
+  font-size: 20px;
+  padding: 30px;
+}
+
+.nav-list a {  
+  position: relative;
+  margin-top: 80px;
+  color: black;
+}
+
+.navigation {
+  background-color: rgb(141, 123, 123);
+  height: 50px;
+  margin: 0;
+
+}
+
+.bigText {
+  font-size: 30px;
+  color: white;
+  padding: 10px;
+  margin: 50% left;
 }
