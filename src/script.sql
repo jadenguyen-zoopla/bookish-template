@@ -6,7 +6,8 @@ DROP TABLE IF EXISTS book;
 CREATE TABLE IF NOT EXISTS book (
     id serial primary key,
     title varchar(255) not null,
-    author varchar(255) not null
+    author varchar(255) not null,
+    quantity int
 );
 
 CREATE TABLE IF NOT EXISTS book_copy (
@@ -28,18 +29,18 @@ CREATE TABLE IF NOT EXISTS checked_out_book (
     return_date date
 );
 
-INSERT INTO book (title, author)
+INSERT INTO book (title, author, quantity)
 VALUES
-('Midnight Sun', 'Stephenie Meyer'),
-('The Giver of Stars', 'Jojo Moyes'),
-('The Body', 'Bill Bryson'),
-('Girl, Woman, Other', 'Bernardine Evaristo'),
-('The Last Widow', 'Karin Slaughter'),
-('Where the Crawdads Sing', 'Delia Owens'),
-('The Boy, The Mole, The Fox and The Horse', 'Charlie Mackesy'),
-('The Institute', 'Stephen King'),
-('What Mummy Makes Cook', 'Rebecca Wilson'),
-('A Silent Death', 'Peter May');
+('Midnight Sun', 'Stephenie Meyer', 3),
+('The Giver of Stars', 'Jojo Moyes', 2),
+('The Body', 'Bill Bryson', 3),
+('Girl, Woman, Other', 'Bernardine Evaristo', 1),
+('The Last Widow', 'Karin Slaughter', 3),
+('Where the Crawdads Sing', 'Delia Owens', 2),
+('The Boy, The Mole, The Fox and The Horse', 'Charlie Mackesy', 3),
+('The Institute', 'Stephen King', 1),
+('What Mummy Makes Cook', 'Rebecca Wilson', 2),
+('A Silent Death', 'Peter May', 2);
 
 INSERT INTO book_copy(book_id)
 VALUES
@@ -94,3 +95,5 @@ VALUES
 (18, 7, '2020-08-13', '2020-08-27'),
 (20, 10, '2020-08-09', '2020-08-22'),
 (22, 4, '2020-07-22', '2020-08-06');
+
+ALTER TABLE book ADD COLUMN deleted boolean not null default false;

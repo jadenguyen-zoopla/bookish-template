@@ -1,19 +1,19 @@
-  
 {% extends "_base.html" %}
 
 {% block content %}
-<div class= "centered">
+<div class="centered">
 
-    <h1 class="titleText">Delete Book</h1>
+    <h1 class="titleText">Add User</h1>
 
     <ul class="ul">
-       <form method = "post" action = "/delete-book">
+       <form method = "post" action = "/add-user">
         <!-- <label for="message-input"></label>
         <input id="message-input" type = "text" name= "Message"/> -->
+        <label class="label" for="name">Name: </label>
+        <input id= "name" type = "text" name = "name"/>
     
-    
-        <label class="label" for = "id">Book ID:</label>
-        <input class="input" id="id" type = "number" name = "id"/>
+        <label class="label" for = "email">Email: </label>
+        <input class="input" id="email" type = "text" name = "email"/>
     
         <button class="button" type= "submit">Submit</button>
     

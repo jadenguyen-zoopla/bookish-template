@@ -1,0 +1,36 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="centered">
+
+    <h1 class="titleText">Get User By Id</h1>
+
+    <form method="post" action="/user-id">
+
+        <label class="label" for="id">User ID:</label>
+        <input class="input" id="id" type="number" name="id" />
+
+        <button class="button" type="submit">Submit</button>
+    </form>
+
+    <p class="bigText">
+        {{userCheckOuts[0].name | upper}} <br>
+        {{userCheckOuts[0].email}}
+    </p>
+
+    <ul class="ul">
+        {% for userCheckOut in userCheckOuts %}
+
+
+        <li class="bigText">
+            {{userCheckOut.title}} <br>
+            {{userCheckOut.check_out_date | formatDate}} <br>
+            {{userCheckOut.return_date | formatDate}}</li>
+
+        {% endfor %}
+
+
+    </ul>
+</div>
+
+{% endblock %}
