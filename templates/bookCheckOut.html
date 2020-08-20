@@ -18,19 +18,19 @@
         {{userCheckOuts[0].email}}
     </p>
 
-    <ul class="ul">
+    <!-- <ul class="ul"> -->
         {% for userCheckOut in userCheckOuts %}
 
 
-        <li class="bigText">
-            {{userCheckOut.title}} <br>
-            {{userCheckOut.check_out_date | formatDate}} <br>
-            {{userCheckOut.return_date | formatDate}}</li>
+        <p class="bigText">
+            {{userCheckOut.title}}<br>
+            {{userCheckOut.check_out_date | formatDate}}<br>
+            {{userCheckOut.return_date | formatDate}}</p>
 
         {% endfor %}
 
 
-    </ul>
+    <!-- </ul> -->
 </div>
 
 {% endblock %}
